@@ -88,7 +88,7 @@ const InstagramCloneSection = () => {
         ].map((feature, index) => (
           <div
             key={index}
-            className="bg-gray-800 bg-opacity-30 p-6 rounded-lg shadow-lg hover:scale-105 hover:bg-opacity-50 hover:shadow-2xl transition-all duration-500 wow animate__animated animate__bounceInLeft animate__delay-1s"
+            className="bg-gray-800 bg-opacity-30 p-6 rounded-lg shadow-lg hover:scale-105 hover:bg-opacity-50 hover:shadow-2xl transition-all duration-500 wow animate__animated animate__bounceInLeft           animate__delay-1s"
           >
             <img
               src={feature.image}
