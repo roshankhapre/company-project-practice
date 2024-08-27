@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Phone, Email, LocationOn, ArrowForward } from "@mui/icons-material";
 
+import "animate.css";
+import WOW from "wowjs";
+
 const Form = () => {
+  useEffect(() => {
+    new WOW.WOW({
+      live: false,
+    }).init();
+  }, []);
   return (
     <div className="flex flex-col md:flex-row p-8 space-y-6 md:space-y-0 md:space-x-6 animate-fadeIn">
       {/* Contact Details Section */}
@@ -15,7 +23,7 @@ const Form = () => {
             fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem", lg: "4.5rem" },
             lineHeight: 1.2,
           }}
-          className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500 animate-gradientShift"
+          className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500 animate-gradientShift wow animate__animated animate__lightSpeedInLeft animate__delay-1s"
         >
           Contact Us
         </Typography>
@@ -55,7 +63,7 @@ const Form = () => {
             fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem", lg: "4.5rem" },
             lineHeight: 1.2,
           }}
-          className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500 animate-gradientShift"
+          className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500 animate-gradientShift wow animate__animated animate__lightSpeedInRight animate__delay-1s"
         >
           Enquiry Now
         </Typography>

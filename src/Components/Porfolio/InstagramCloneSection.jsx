@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import logo from "../../assests/Lovepik_com-450129809-Instagram.png";
@@ -10,52 +8,15 @@ import userProfile from "../../assests/insta-user-profile.png";
 import story from "../../assests/story.png";
 import savedItem from "../../assests/insta-saved.png";
 import background from "../../assests/1315464.jpg";
+import "animate.css";
+import WOW from "wowjs";
 
 const InstagramCloneSection = () => {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  // Animation variants
-  const cardVariants = {
-    hidden: { opacity: 0, x: "-100vw" }, // Start off-screen
-    visible: (index) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: index * 0.3,
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    }),
-  };
-
-  const heroVariants = {
-    hidden: { opacity: 0, y: -30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
-    },
-  };
-
-  const footerVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
-    },
-  };
-
+    new WOW.WOW({
+      live: false,
+    }).init();
+  }, []);
   return (
     <div
       className="text-white p-10 bg-gradient-to-br from-pink-400 via-white to-red-800"
@@ -67,34 +28,22 @@ const InstagramCloneSection = () => {
       }}
     >
       {/* Hero Section */}
-      <motion.div
-        className="text-center mb-16"
-        variants={heroVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.img
+      <div className="text-center mb-16">
+        <img
           src={logo}
           alt="Instagram Logo"
-          className="mx-auto w-24 h-24 opacity-90 filter drop-shadow-2xl animate-pulse"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="mx-auto w-24 h-24 opacity-90 filter drop-shadow-2xl animate-pulse hover:scale-110 transition-transform duration-500 ease-in-out"
         />
-        <h1 className="text-6xl font-extrabold mt-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-gradient-x">
+        <h1 className="text-6xl font-extrabold mt-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-gradient-x wow animate__animated animate__zoomInUp animate__delay-1s">
           Instagram Clone
         </h1>
-        <p className="text-2xl mt-4 text-gray-300">
+        <p className="text-2xl mt-4 text-gray-300 wow animate__animated animate__lightSpeedInLeft animate__delay-1s">
           Powered by Spring Boot, React.js, and MySQL
         </p>
-      </motion.div>
+      </div>
 
       {/* Image Carousel */}
-      <motion.div
-        className="relative w-full max-w-6xl mx-auto mb-16 shadow-2xl rounded-lg overflow-hidden"
-        variants={heroVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <div className="relative w-full max-w-6xl mx-auto mb-16 shadow-2xl rounded-lg overflow-hidden wow animate__animated animate__zoomInUp">
         <Carousel
           autoPlay
           infiniteLoop
@@ -106,16 +55,14 @@ const InstagramCloneSection = () => {
         >
           {[feed, profile, userProfile, story, savedItem].map(
             (image, index) => (
-              <motion.div
+              <div
                 key={index}
-                className="relative"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="relative hover:scale-105 transition-transform duration-100 ease-in-out"
               >
                 <img
                   src={image}
                   alt={`Slide ${index + 1}`}
-                  className="w-full object-cover transition-opacity duration-700 ease-in-out"
+                  className="w-full object-cover transition-opacity duration-700 ease-in-out hover:opacity-90"
                 />
                 <p className="legend bg-gray-900 bg-opacity-70 py-2 px-4 rounded">
                   {
@@ -124,17 +71,14 @@ const InstagramCloneSection = () => {
                     ]
                   }
                 </p>
-              </motion.div>
+              </div>
             )
           )}
         </Carousel>
-      </motion.div>
+      </div>
 
       {/* Feature Cards Section */}
-      <div
-        ref={ref}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {[
           { image: feed, title: "Feed" },
           { image: profile, title: "Profile" },
@@ -142,40 +86,31 @@ const InstagramCloneSection = () => {
           { image: story, title: "Story" },
           { image: savedItem, title: "Saved Items" },
         ].map((feature, index) => (
-          <motion.div
+          <div
             key={index}
-            className="bg-gray-800 bg-opacity-30 p-6 rounded-lg shadow-lg transform hover:scale-105 hover:bg-opacity-50 hover:shadow-2xl transition-all duration-500"
-            variants={cardVariants}
-            initial="hidden"
-            animate={controls}
+            className="bg-gray-800 bg-opacity-30 p-6 rounded-lg shadow-lg hover:scale-105 hover:bg-opacity-50 hover:shadow-2xl transition-all duration-500 wow animate__animated animate__bounceInLeft animate__delay-1s"
           >
-            <motion.img
+            <img
               src={feature.image}
               alt={feature.title}
               className="w-full rounded-lg mb-4 object-cover hover:opacity-90 transition-opacity duration-500"
-              whileHover={{ scale: 1.1 }}
             />
             <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 animate-text-focus-in">
               {feature.title}
             </h3>
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* Footer Section */}
-      <motion.div
-        className="text-center"
-        variants={footerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <div className="text-center">
         <a
           href="your-github-or-live-demo-link"
-          className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 text-white py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-110 hover:shadow-2xl duration-300 ease-in-out"
+          className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 text-white py-3 px-6 rounded-full shadow-lg transform hover:scale-110 hover:shadow-2xl transition-transform duration-300 ease-in-out"
         >
           Explore Project
         </a>
-        <div className="mt-8 space-x-4 animate-slide-in">
+        <div className="mt-8 space-x-4">
           {["Spring Boot", "React.js", "MySQL"].map((tech, index) => (
             <span
               key={index}
@@ -185,7 +120,7 @@ const InstagramCloneSection = () => {
             </span>
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
