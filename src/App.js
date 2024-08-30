@@ -1,35 +1,38 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
-import Carousel from "./Components/Carousel";
+import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
 import NavbarNew from "./Components/NavbarNew";
-
-import CurouselNew from "./Components/CurouselNew";
-import NewCarousel from "./Components/NewCarousel";
-import Example from "./Components/Example";
+import Carousel from "./Components/Carousel";
+import AboutUs from "./Components/AboutUs";
 import Form from "./Components/Form";
 import FullStackDevelopment from "./Components/Services/FullStackDevelopment";
 import WebDevelopment from "./Components/Services/WebDevelopment";
-import Portfolio from "./Components/Porfolio/Portfolio";
-import Animations from "./Components/Animations";
-import ProtfolioNew from "./Components/Porfolio/ProtfolioNew";
+import PortfolioNew from "./Components/Porfolio/ProtfolioNew";
 import InstagramCloneSection from "./Components/Porfolio/InstagramCloneSection";
+import Webdesign from "./Components/Services/Webdesign";
+import IPortfolio from "./Components/Porfolio/IPortfolio";
+import ScrollImage from "./Components/Porfolio/ScrollImage";
+
+import BlobImage from "./Components/BlobImage";
 
 function App() {
   return (
-    <div>
-      {/* <Navbar /> */}
-      <NavbarNew />
-      <Carousel />
+    <BrowserRouter>
+      {" "}
+      {/* Wrap the app with BrowserRouter */}
+      <div>
+        <NavbarNew />
 
-      <Form />
+        <BlobImage />
 
-      <FullStackDevelopment />
-      <WebDevelopment />
+        <FullStackDevelopment />
+        <WebDevelopment />
+        <Webdesign />
+        <PortfolioNew />
+        <InstagramCloneSection />
 
-      <ProtfolioNew />
-      <InstagramCloneSection />
-      {/* Other content here */}
-    </div>
+        <IPortfolio />
+      </div>
+    </BrowserRouter>
   );
 }
 

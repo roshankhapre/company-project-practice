@@ -59,7 +59,7 @@ const NavbarNew = () => {
   }, [isOpen, dropdownTimer]);
 
   return (
-    <header className="w-full fixed top-0 z-50" ref={navRef}>
+    <header className="w-full sticky top-0 z-50" ref={navRef}>
       {/* Top Bar */}
       <div className="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-gray-300 text-sm py-2 shadow-lg">
         <div className="container mx-auto flex justify-between items-center px-4">
@@ -68,7 +68,7 @@ const NavbarNew = () => {
       </div>
 
       {/* Main Navbar */}
-      <nav className="bg-white">
+      <nav className="bg-white border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           {/* Logo with Home Page Link */}
           <div className="flex items-center">
